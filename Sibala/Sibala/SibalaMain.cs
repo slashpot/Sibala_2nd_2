@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sibala
 {
-    class Sibala
+    public class SibalaMain
     {
     }
 }
