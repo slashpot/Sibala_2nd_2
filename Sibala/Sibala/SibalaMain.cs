@@ -24,7 +24,7 @@ namespace Sibala
                 if (inputResult1.Type == SibalaType.OneColor)
                 {
                     List<int> diceOrder = new List<int>() { 2, 3, 5, 6, 4, 1 };
-                    return diceOrder.ElementAt(inputResult1.MaxDice) - diceOrder.ElementAt(inputResult2.MaxDice);
+                    return diceOrder.IndexOf(inputResult1.Value) - diceOrder.IndexOf(inputResult2.Value);
                 }
             }
             
