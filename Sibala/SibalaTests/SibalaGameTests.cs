@@ -12,13 +12,9 @@ namespace Sibala.Tests
         [TestMethod()]
         public void SibalaGameTest()
         {
-            var actual = new SibalaGame(new List<int>() { 6, 6, 6, 6 }).GetResult();
-            var expected = new SibalaResult()
-            {
-                type = SibalaType.OneColor,
-                value = 6
-            };
-            Assert.AreEqual(expected, actual);
+            var actual = new SibalaGame(new List<int>() { 6, 6, 6, 6 }).Output;
+            
+            Assert.AreEqual("One Color", actual);
         }
     }
 }

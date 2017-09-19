@@ -7,23 +7,18 @@ namespace Sibala
 {
     public class SibalaGame
     {
-
+        public SibalaType Type;
+        public int Value;
+        public string Output;
+        public int MaxDice;
         public SibalaGame(List<int> dices)
         {
-            
-        }
-
-        public SibalaResult GetResult()
-        {
-            return null;
+            Type = SibalaType.OneColor;
+            Value = 6;
+            Output = "One Color";
         }
     }
 
-    public class SibalaResult
-    {
-        public SibalaType type;
-        public int value;
-    }
 
     public enum SibalaType
     {
