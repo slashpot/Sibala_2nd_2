@@ -45,29 +45,41 @@ namespace Sibala
             {
                 if (IsTwoPair())
                 {
-                    Type = SibalaType.NormalPoint;
                     Points = _dices.Max() * 2;
                     MaxPoint = _dices.Max();
-
-                    Output = Points == 12 ? "18la" : Points + " Point";
                 }
                 else
                 {
-                    var theSame = _dices.GroupBy(x => x).Where(y => y.Count() == 1);
-
-                    Type = SibalaType.NormalPoint;
-                    Points = theSame.Select(x => x.Key).Sum();
-                    if (Points == 3)
-                    {
-                        Output = "BG";
-                    }
-                    else
-                    {
-                        Output = Points + " Point";
-                    }
-                    MaxPoint = theSame.Select(x => x.Key).Max();
+                    var singleDices = GetSingleDices();
+                    Points = singleDices.Sum();
+                    MaxPoint = singleDices.Max();
                 }
+                Output = GetOutput();
+                Type = SibalaType.NormalPoint;
             }
+        }
+
+        private string GetOutput()
+        {
+            if (Is18La()) return "18la";
+            if (IsBG()) return "BG";
+            return Points + " Point";
+        }
+
+        private bool IsBG()
+        {
+            return Points == 3;
+        }
+
+        private bool Is18La()
+        {
+            return Points == 12;
+        }
+
+        private IEnumerable<int> GetSingleDices()
+        {
+            var singleDices = _dices.GroupBy(x => x).Where(y => y.Count() == 1).Select(x => x.Key);
+            return singleDices;
         }
 
         private bool IsTwoPair()
