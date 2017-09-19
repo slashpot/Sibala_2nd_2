@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sibala", "Sibala\Sibala.csproj", "{DA636CBD-BEE9-4F5B-8B8F-8AC6D79CE022}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SibalaTests", "SibalaTests\SibalaTests.csproj", "{8CE12B5A-DBA0-44FC-B099-784705F46F9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DA636CBD-BEE9-4F5B-8B8F-8AC6D79CE022}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA636CBD-BEE9-4F5B-8B8F-8AC6D79CE022}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA636CBD-BEE9-4F5B-8B8F-8AC6D79CE022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE12B5A-DBA0-44FC-B099-784705F46F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE12B5A-DBA0-44FC-B099-784705F46F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE12B5A-DBA0-44FC-B099-784705F46F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE12B5A-DBA0-44FC-B099-784705F46F9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

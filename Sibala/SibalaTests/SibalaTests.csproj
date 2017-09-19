@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>08e5a3f8-e1f6-4e06-bb9a-a104657f490b</ProjectGuid>
+    <ProjectGuid>{8CE12B5A-DBA0-44FC-B099-784705F46F9E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SibalaTests</RootNamespace>
