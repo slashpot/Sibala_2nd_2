@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Sibala
+namespace Sibala.Comparer
 {
     public class NormalPointComparer : IComparer<SibalaGame>
     {

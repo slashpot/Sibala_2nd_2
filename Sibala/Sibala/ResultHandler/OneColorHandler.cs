@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Sibala
+namespace Sibala.ResultHandler
 {
     public class OneColorHandler : ISibalaResultHandler
     {
