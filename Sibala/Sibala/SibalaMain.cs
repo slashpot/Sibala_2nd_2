@@ -14,7 +14,7 @@ namespace Sibala
                 if (inputResult1.Type == SibalaType.NormalPoint && inputResult1.Value == inputResult2.Value)
                 {
                     return inputResult1.MaxDice - inputResult2.MaxDice;
-                }   
+                }
 
                 if (inputResult1.Type == SibalaType.NormalPoint)
                 {
@@ -23,10 +23,11 @@ namespace Sibala
 
                 if (inputResult1.Type == SibalaType.OneColor)
                 {
-                    List<int> diceOrder = new List<int>(){2,3,5,6,4,1};
-                    return diceOrder[inputResult1.MaxDice] - diceOrder[inputResult2.MaxDice];
-;                }
+                    List<int> diceOrder = new List<int>() { 2, 3, 5, 6, 4, 1 };
+                    return diceOrder.IndexOf(inputResult1.Value) - diceOrder.IndexOf(inputResult2.Value);
+                }
             }
+            
             return inputResult1.Type - inputResult2.Type;
 
         }
