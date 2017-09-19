@@ -73,10 +73,10 @@ namespace SibalaTests
         }
 
         [TestMethod]
-        public void NormalPoint_1124_Should_Smaller_than_NormalPoint_1133()
+        public void NormalPoint_1133_Should_Smaller_than_NormalPoint_1124()
         {
-            _inputResult1 = new SibalaGame(new List<int> { 1, 1, 2, 4 });
-            _inputResult2 = new SibalaGame(new List<int> { 1, 1, 3, 3 });
+            _inputResult1 = new SibalaGame(new List<int> { 1, 1, 3, 3 });
+            _inputResult2 = new SibalaGame(new List<int> { 1, 1, 2, 4 });
 
             AssertInputIsSmaller();
         }
