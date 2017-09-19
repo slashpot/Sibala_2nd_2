@@ -62,6 +62,12 @@ namespace Sibala.Tests
             Test(new List<int> { 5, 5, 6, 6 }, "18la");
         }
 
+        [TestMethod()]
+        public void SibalaGameTest_6623_MaxValue3()
+        {
+            var actual = new SibalaGame(new List<int> { 6, 6, 2, 3 }).MaxDice;
+            Assert.AreEqual(3,actual);
+        }
 
 
 
