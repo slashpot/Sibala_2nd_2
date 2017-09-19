@@ -26,16 +26,16 @@ namespace Sibala.Tests
         {
             Test(new List<int> { 1, 2, 3, 4 }, "No Point");
         }
-        //[TestMethod()]
-        //public void SibalaGameTest_3SameNumberDice_NoPoint()
-        //{
-        //    Test(new List<int> { 5, 2, 5, 5 }, "No Point");
-        //}
-        //[TestMethod()]
-        //public void SibalaGameTest_3121_5Point()
-        //{
-        //    Test(new List<int> { 3, 1, 2, 1 }, "5 Point");
-        //}
+        [TestMethod()]
+        public void SibalaGameTest_3SameNumberDice_NoPoint()
+        {
+            Test(new List<int> { 5, 2, 5, 5 }, "No Point");
+        }
+        [TestMethod()]
+        public void SibalaGameTest_3121_5Point()
+        {
+            Test(new List<int> { 3, 1, 2, 1 }, "5 Point");
+        }
         //[TestMethod()]
         //public void SibalaGameTest_4455_10Point()
         //{

@@ -15,6 +15,7 @@ namespace Sibala
         {
             var groupAmount = dices.GroupBy(x => x).Count();
 
+            
             Calculate(dices, groupAmount);
         }
 
@@ -32,7 +33,25 @@ namespace Sibala
                 Value = 0;
                 Output = "No Point";
             }
+            else if (groupAmount == 2)
+            {
+                var theSame = dices.GroupBy(x => x).Where(y => y.Count() == 3);
 
+                if (theSame.Any())
+                {
+                    Type = SibalaType.NoPoint;
+                    Value = 0;
+                    Output = "No Point";
+                }
+            }
+            else
+            {
+                var theSame = dices.GroupBy(x => x).Where(y => y.Count() == 1);
+                
+                Type = SibalaType.NormalPoint;
+                Value = theSame.Select(x=>x.Key).Sum();
+                Output = Value.ToString() + " Point";
+            }
         }
     }
 
