@@ -32,20 +32,18 @@ namespace Sibala
 
         private ISibalaResultHandler GetSibalaResultHandler()
         {
-            ISibalaResultHandler handler;
             if (IsOneColor())
             {
-                handler = new OneColorHandler(this);
+                return new OneColorHandler(this);
             }
             else if (IsNoPoint())
             {
-                handler = new NoPointHandler(this);
+                return new NoPointHandler(this);
             }
             else
             {
-                handler = new NormalPointHandler(this);
+                return new NormalPointHandler(this);
             }
-            return handler;
         }
 
         private bool IsAllDifferentPoint()
@@ -65,7 +63,7 @@ namespace Sibala
 
         private bool IsSamePointWithThree()
         {
-            return Dices.GroupBy(x => x).Where(y => y.Count() == 3).Any();
+            return Dices.GroupBy(x => x).Any(y => y.Count() == 3);
         }
     }
 
