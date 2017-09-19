@@ -40,8 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="NoPointComparer.cs" />
     <Compile Include="NoPointHandler.cs" />
+    <Compile Include="NormalPointComparer.cs" />
     <Compile Include="NormalPointHandler.cs" />
+    <Compile Include="OneColorComparer.cs" />
     <Compile Include="OneColorHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SibalaComparer.cs" />

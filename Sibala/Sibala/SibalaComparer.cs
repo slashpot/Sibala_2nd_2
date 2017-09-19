@@ -8,42 +8,22 @@ namespace Sibala
         {
             if (IsSameType(x, y))
             {
-                if (x.Type == SibalaType.NormalPoint)
-                {
-                    return NormalPointCompare(x, y);
-                }
-                else if (x.Type == SibalaType.OneColor)
-                {
-                    return OneColorCompare(x, y);
-                }
-                else
-                {
-                    return NoPointCompare(x, y);
-                }
+                return GetComparer(x.Type).Compare(x, y);
             }
 
             return x.Type - y.Type;
         }
 
-        private static int NoPointCompare(SibalaGame x, SibalaGame y)
+        private static IComparer<SibalaGame> GetComparer(SibalaType sibalaType)
         {
-            return x.Type - y.Type;
-        }
-
-        private static int OneColorCompare(SibalaGame x, SibalaGame y)
-        {
-            List<int> diceOrder = new List<int> {2, 3, 5, 6, 4, 1};
-            return diceOrder.IndexOf(x.Points) - diceOrder.IndexOf(y.Points);
-        }
-
-        private static int NormalPointCompare(SibalaGame x, SibalaGame y)
-        {
-            if (x.Points == y.Points)
+            var comparerLookup = new Dictionary<SibalaType, IComparer<SibalaGame>>
             {
-                return x.MaxPoint - y.MaxPoint;
-            }
+                {SibalaType.NormalPoint, new NormalPointComparer()},
+                {SibalaType.NoPoint, new NoPointComparer()},
+                {SibalaType.OneColor, new OneColorComparer()},
+            };
 
-            return x.Points - y.Points;
+            return comparerLookup[sibalaType];
         }
 
         private static bool IsSameType(SibalaGame x, SibalaGame y)
