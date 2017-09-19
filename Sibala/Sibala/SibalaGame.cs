@@ -26,12 +26,14 @@ namespace Sibala
                 Type = SibalaType.OneColor;
                 Value = dices.First();
                 Output = "One Color";
+                MaxDice = Value;
             } 
             else if (groupAmount > 3) 
             {
                 Type = SibalaType.NoPoint;
                 Value = 0;
                 Output = "No Point";
+                MaxDice = Value;
             }
             else if (groupAmount == 2)
             {
@@ -48,7 +50,15 @@ namespace Sibala
                 {
                     Type = SibalaType.NormalPoint;
                     Value = hasTwo.Select(x=>x.Key).Max()*2;
-                    Output = Value + " Point";
+                    if (Value == 12)
+                    {
+                        Output = "18la";
+                    }
+                    else
+                    {
+                        Output = Value + " Point";
+                    }
+                    MaxDice = hasTwo.Select(x => x.Key).Max();
 
                 }
             }
@@ -65,8 +75,8 @@ namespace Sibala
                 else
                 {
                     Output = Value.ToString() + " Point";
-
                 }
+                MaxDice = theSame.Select(x=>x.Key).Max();
             }
         }
     }

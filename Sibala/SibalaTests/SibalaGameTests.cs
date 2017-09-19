@@ -56,11 +56,11 @@ namespace Sibala.Tests
         {
             Test(new List<int> { 3, 3, 1, 2 }, "BG");
         }
-        //[TestMethod()]
-        //public void SibalaGameTest_5566_18la()
-        //{
-        //    Test(new List<int> { 5, 5, 6, 6 }, "18la");
-        //}
+        [TestMethod()]
+        public void SibalaGameTest_5566_18la()
+        {
+            Test(new List<int> { 5, 5, 6, 6 }, "18la");
+        }
 
 
 
