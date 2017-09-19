@@ -21,5 +21,14 @@ namespace Sibala
 
     public class SibalaResult
     {
+        public SibalaType type;
+        public int value;
+    }
+
+    public enum SibalaType
+    {
+        OneColor = 2,
+        NormalPoint = 1,
+        NoPoint = 0
     }
 }
