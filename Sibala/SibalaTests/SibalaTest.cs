@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using NUnit.Framework;
 
 namespace SibalaTests
 {
-    class SibalaTest
+    [TestFixture]
+    public class SibalaTest
     {
+        [Test]
+        public void SamePoint_Should_Bigger_than_NormalPoint()
+        {
+        }
     }
 }
