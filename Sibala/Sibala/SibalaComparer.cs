@@ -8,20 +8,23 @@ namespace Sibala
         {
             if (IsSameType(x, y))
             {
-                if (x.Type == SibalaType.NormalPoint && x.Points == y.Points)
-                {
-                    return x.MaxPoint - y.MaxPoint;
-                }
-
                 if (x.Type == SibalaType.NormalPoint)
                 {
+                    if (x.Points == y.Points)
+                    {
+                        return x.MaxPoint - y.MaxPoint;
+                    }
+
                     return x.Points - y.Points;
                 }
-
-                if (x.Type == SibalaType.OneColor)
+                else if (x.Type == SibalaType.OneColor)
                 {
-                    List<int> diceOrder = new List<int>() { 2, 3, 5, 6, 4, 1 };
+                    List<int> diceOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
                     return diceOrder.IndexOf(x.Points) - diceOrder.IndexOf(y.Points);
+                }
+                else
+                {
+                    return x.Type - y.Type;
                 }
             }
 
