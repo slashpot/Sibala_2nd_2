@@ -49,14 +49,7 @@ namespace Sibala
                     Points = _dices.Max() * 2;
                     MaxPoint = _dices.Max();
 
-                    if (Points == 12)
-                    {
-                        Output = "18la";
-                    }
-                    else
-                    {
-                        Output = Points + " Point";
-                    }
+                    Output = Points == 12 ? "18la" : Points + " Point";
                 }
                 else
                 {
