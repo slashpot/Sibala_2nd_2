@@ -10,6 +10,11 @@ namespace Sibala
         NoPoint = 0
     }
 
+    internal interface ISibalaResultHandler
+    {
+        void SetResult();
+    }
+
     public class SibalaGame
     {
         public SibalaGame(List<int> dices)
@@ -18,12 +23,11 @@ namespace Sibala
             Calculate();
         }
 
+        public List<int> Dices { get; }
         public int MaxPoint { get; set; }
         public string Output { get; set; }
         public int Points { get; set; }
         public SibalaType Type { get; set; }
-
-        public List<int> Dices { get; }
 
         private void Calculate()
         {
@@ -43,10 +47,5 @@ namespace Sibala
 
             return handlerLookup[sameDiceMaxCount];
         }
-    }
-
-    internal interface ISibalaResultHandler
-    {
-        void SetResult();
     }
 }
