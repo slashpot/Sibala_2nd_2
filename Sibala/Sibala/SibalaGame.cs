@@ -12,9 +12,12 @@ namespace Sibala
 
     public class SibalaGame
     {
+        private readonly List<int> _dices;
+
         public SibalaGame(List<int> dices)
         {
-            Calculate(dices);
+            _dices = dices;
+            Calculate();
         }
 
         public int MaxPoint { get; private set; }
@@ -22,13 +25,13 @@ namespace Sibala
         public SibalaType Type { get; private set; }
         public int Points { get; private set; }
 
-        private void Calculate(List<int> dices)
+        private void Calculate()
         {
-            int groupAmount = dices.GroupBy(x => x).Count();
+            int groupAmount = _dices.GroupBy(x => x).Count();
             if (groupAmount == 1)
             {
                 Type = SibalaType.OneColor;
-                Points = dices.First();
+                Points = _dices.First();
                 Output = "One Color";
                 MaxPoint = Points;
             }
@@ -41,8 +44,8 @@ namespace Sibala
             }
             else if (groupAmount == 2)
             {
-                var hasThree = dices.GroupBy(x => x).Where(y => y.Count() == 3);
-                var hasTwo = dices.GroupBy(x => x).Where(y => y.Count() == 2);
+                var hasThree = _dices.GroupBy(x => x).Where(y => y.Count() == 3);
+                var hasTwo = _dices.GroupBy(x => x).Where(y => y.Count() == 2);
 
                 if (hasThree.Any())
                 {
@@ -67,7 +70,7 @@ namespace Sibala
             }
             else
             {
-                var theSame = dices.GroupBy(x => x).Where(y => y.Count() == 1);
+                var theSame = _dices.GroupBy(x => x).Where(y => y.Count() == 1);
 
                 Type = SibalaType.NormalPoint;
                 Points = theSame.Select(x => x.Key).Sum();
