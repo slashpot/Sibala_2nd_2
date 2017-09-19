@@ -35,13 +35,21 @@ namespace Sibala
             }
             else if (groupAmount == 2)
             {
-                var theSame = dices.GroupBy(x => x).Where(y => y.Count() == 3);
+                var hasThree = dices.GroupBy(x => x).Where(y => y.Count() == 3);
+                var hasTwo = dices.GroupBy(x => x).Where(y => y.Count() == 2);
 
-                if (theSame.Any())
+                if (hasThree.Any())
                 {
                     Type = SibalaType.NoPoint;
                     Value = 0;
                     Output = "No Point";
+                }
+                else
+                {
+                    Type = SibalaType.NormalPoint;
+                    Value = hasTwo.Select(x=>x.Key).Max()*2;
+                    Output = Value + " Point";
+
                 }
             }
             else
@@ -50,7 +58,15 @@ namespace Sibala
                 
                 Type = SibalaType.NormalPoint;
                 Value = theSame.Select(x=>x.Key).Sum();
-                Output = Value.ToString() + " Point";
+                if (Value == 3)
+                {
+                    Output = "BG";
+                }
+                else
+                {
+                    Output = Value.ToString() + " Point";
+
+                }
             }
         }
     }
