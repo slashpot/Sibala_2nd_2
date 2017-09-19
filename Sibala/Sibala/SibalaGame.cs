@@ -12,84 +12,45 @@ namespace Sibala
 
     public class SibalaGame
     {
-        private readonly List<int> _dices;
+        private readonly OneColorHandler _oneColorHandler;
+        private readonly NoPointHandler _noPointHandler;
+        private readonly NormalPointHandler _normalPointHandler;
 
         public SibalaGame(List<int> dices)
         {
-            _dices = dices;
+            Dices = dices;
+            _oneColorHandler = new OneColorHandler(this);
+            _noPointHandler = new NoPointHandler(this);
+            _normalPointHandler = new NormalPointHandler(this);
             Calculate();
         }
 
-        public int MaxPoint { get; private set; }
-        public string Output { get; private set; }
-        public int Points { get; private set; }
-        public SibalaType Type { get; private set; }
+        public int MaxPoint { get; set; }
+        public string Output { get; set; }
+        public int Points { get; set; }
+        public SibalaType Type { get; set; }
+
+        public List<int> Dices { get; }
 
         private void Calculate()
         {
             if (IsOneColor())
             {
-                Type = SibalaType.OneColor;
-                Points = _dices.First();
-                Output = "One Color";
-                MaxPoint = Points;
+                _oneColorHandler.SetOneColor();
             }
             else if (IsNoPoint())
             {
-                Type = SibalaType.NoPoint;
-                Points = 0;
-                Output = "No Point";
-                MaxPoint = Points;
+                _noPointHandler.SetNoPoint();
             }
             else
             {
-                if (IsTwoPair())
-                {
-                    Points = _dices.Max() * 2;
-                    MaxPoint = _dices.Max();
-                }
-                else
-                {
-                    var singleDices = GetSingleDices();
-                    Points = singleDices.Sum();
-                    MaxPoint = singleDices.Max();
-                }
-                Output = GetOutput();
-                Type = SibalaType.NormalPoint;
+                _normalPointHandler.SetNormalPoint();
             }
-        }
-
-        private string GetOutput()
-        {
-            if (Is18La()) return "18la";
-            if (IsBG()) return "BG";
-            return Points + " Point";
-        }
-
-        private bool IsBG()
-        {
-            return Points == 3;
-        }
-
-        private bool Is18La()
-        {
-            return Points == 12;
-        }
-
-        private IEnumerable<int> GetSingleDices()
-        {
-            var singleDices = _dices.GroupBy(x => x).Where(y => y.Count() == 1).Select(x => x.Key);
-            return singleDices;
-        }
-
-        private bool IsTwoPair()
-        {
-            return _dices.GroupBy(x => x).Count() == 2;
         }
 
         private bool IsAllDifferentPoint()
         {
-            return _dices.GroupBy(x => x).Count() == 4;
+            return Dices.GroupBy(x => x).Count() == 4;
         }
 
         private bool IsNoPoint()
@@ -99,12 +60,12 @@ namespace Sibala
 
         private bool IsOneColor()
         {
-            return _dices.GroupBy(x => x).Count() == 1;
+            return Dices.GroupBy(x => x).Count() == 1;
         }
 
         private bool IsSamePointWithThree()
         {
-            return _dices.GroupBy(x => x).Where(y => y.Count() == 3).Any();
+            return Dices.GroupBy(x => x).Where(y => y.Count() == 3).Any();
         }
     }
 }
