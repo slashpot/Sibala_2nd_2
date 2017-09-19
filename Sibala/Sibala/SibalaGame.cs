@@ -22,9 +22,8 @@ namespace Sibala
 
         public int MaxPoint { get; private set; }
         public string Output { get; private set; }
-        public SibalaType Type { get; private set; }
         public int Points { get; private set; }
-
+        public SibalaType Type { get; private set; }
         private void Calculate()
         {
             if (IsOneColor())
@@ -41,19 +40,12 @@ namespace Sibala
                 Output = "No Point";
                 MaxPoint = Points;
             }
-            else if (_dices.GroupBy(x => x).Count() == 2)
+            else
             {
-                var hasThree = _dices.GroupBy(x => x).Where(y => y.Count() == 3);
-                var hasTwo = _dices.GroupBy(x => x).Where(y => y.Count() == 2);
+                if (_dices.GroupBy(x => x).Count() == 2)
+                {
+                    var hasTwo = _dices.GroupBy(x => x).Where(y => y.Count() == 2);
 
-                if (hasThree.Any())
-                {
-                    Type = SibalaType.NoPoint;
-                    Points = 0;
-                    Output = "No Point";
-                }
-                else
-                {
                     Type = SibalaType.NormalPoint;
                     Points = hasTwo.Select(x => x.Key).Max() * 2;
                     if (Points == 12)
@@ -66,33 +58,43 @@ namespace Sibala
                     }
                     MaxPoint = hasTwo.Select(x => x.Key).Max();
                 }
-            }
-            else
-            {
-                var theSame = _dices.GroupBy(x => x).Where(y => y.Count() == 1);
-
-                Type = SibalaType.NormalPoint;
-                Points = theSame.Select(x => x.Key).Sum();
-                if (Points == 3)
-                {
-                    Output = "BG";
-                }
                 else
                 {
-                    Output = Points.ToString() + " Point";
+                    var theSame = _dices.GroupBy(x => x).Where(y => y.Count() == 1);
+
+                    Type = SibalaType.NormalPoint;
+                    Points = theSame.Select(x => x.Key).Sum();
+                    if (Points == 3)
+                    {
+                        Output = "BG";
+                    }
+                    else
+                    {
+                        Output = Points.ToString() + " Point";
+                    }
+                    MaxPoint = theSame.Select(x => x.Key).Max();
                 }
-                MaxPoint = theSame.Select(x => x.Key).Max();
             }
+        }
+
+        private bool IsAllDifferentPoint()
+        {
+            return _dices.GroupBy(x => x).Count() > 3;
         }
 
         private bool IsNoPoint()
         {
-            return _dices.GroupBy(x => x).Count() > 3;
+            return IsAllDifferentPoint() || IsSamePointWithThree();
         }
 
         private bool IsOneColor()
         {
             return _dices.GroupBy(x => x).Count() == 1;
+        }
+
+        private bool IsSamePointWithThree()
+        {
+            return _dices.GroupBy(x => x).Where(y => y.Count() == 3).Any();
         }
     }
 }
