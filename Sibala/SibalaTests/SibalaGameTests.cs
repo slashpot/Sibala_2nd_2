@@ -1,16 +1,24 @@
 ﻿using System;
-using NUnit.Framework;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Sibala;
 
 namespace Sibala.Tests
 {
-    [TestFixture()]
+    [TestClass()]
     public class SibalaGameTests
     {
-        [Test()]
-        public void GetResultTest()
+        [TestMethod()]
+        public void SibalaGameTest()
         {
-            Assert.Fail();
+            var actual = new SibalaGame(new List<int>() { 6, 6, 6, 6 }).GetResult();
+            var expected = new SibalaResult()
+            {
+                type = SibalaType.OneColor,
+                value = 6
+            };
+            Assert.AreEqual(expected, actual);
         }
     }
 }
