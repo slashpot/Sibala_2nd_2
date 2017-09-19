@@ -65,7 +65,7 @@ namespace Sibala.Tests
         [TestMethod()]
         public void SibalaGameTest_6623_MaxValue3()
         {
-            var actual = new SibalaGame(new List<int> { 6, 6, 2, 3 }).MaxDice;
+            var actual = new SibalaGame(new List<int> { 6, 6, 2, 3 }).MaxPoint;
             Assert.AreEqual(3,actual);
         }
 
