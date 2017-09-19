@@ -27,21 +27,25 @@ namespace Sibala
 
         private void Calculate()
         {
+            GetSibalaResultHandler().SetResult();
+        }
+
+        private ISibalaResultHandler GetSibalaResultHandler()
+        {
+            ISibalaResultHandler handler;
             if (IsOneColor())
             {
-                ISibalaResultHandler handler = new OneColorHandler(this);
-                handler.SetResult();
+                handler = new OneColorHandler(this);
             }
             else if (IsNoPoint())
             {
-                ISibalaResultHandler handler = new NoPointHandler(this);
-                handler.SetResult();
+                handler = new NoPointHandler(this);
             }
             else
             {
-                ISibalaResultHandler handler = new NormalPointHandler(this);
-                handler.SetResult();
+                handler = new NormalPointHandler(this);
             }
+            return handler;
         }
 
         private bool IsAllDifferentPoint()
