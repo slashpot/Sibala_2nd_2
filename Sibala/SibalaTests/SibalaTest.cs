@@ -11,7 +11,6 @@ namespace SibalaTests
         private SibalaGame _inputResult2;
         private SibalaMain _target = new SibalaMain();
         private int actual;
-        private int expected;
 
         [TestMethod]
         public void SamePoint_Should_Bigger_than_NormalPoint()
@@ -24,8 +23,8 @@ namespace SibalaTests
 
         private void AssertInput1IsBigger()
         {
-            actual = _target.Compare(_inputResult1, _inputResult2);
-            Assert.AreEqual(1, actual);
+            actual = _target.Compare(_inputResult1, _inputResult2);         
+            Assert.IsTrue(actual>0);
         }
 
         [TestMethod]
@@ -54,5 +53,7 @@ namespace SibalaTests
 
             AssertInput1IsBigger();
         }
+
+
     }
 }
