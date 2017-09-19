@@ -26,41 +26,41 @@ namespace Sibala.Tests
         {
             Test(new List<int> { 1, 2, 3, 4 }, "No Point");
         }
-        [TestMethod()]
-        public void SibalaGameTest_3SameNumberDice_NoPoint()
-        {
-            Test(new List<int> { 5, 2, 5, 5 }, "No Point");
-        }
-        [TestMethod()]
-        public void SibalaGameTest_3121_5Point()
-        {
-            Test(new List<int> { 3, 1, 2, 1 }, "5 Point");
-        }
-        [TestMethod()]
-        public void SibalaGameTest_4455_10Point()
-        {
-            Test(new List<int> { 4,4,5,5 }, "10 Point");
-        }
-        [TestMethod()]
-        public void SibalaGameTest_2332_6Point()
-        {
-            Test(new List<int> { 2,3,3,2 }, "6 Point");
-        }
-        [TestMethod()]
-        public void SibalaGameTest_1123_5Point()
-        {
-            Test(new List<int> { 1,1,2,3 }, "5 Point");
-        }
-        [TestMethod()]
-        public void SibalaGameTest_3312_BG()
-        {
-            Test(new List<int> { 3,3,1,2 }, "BG");
-        }
-        [TestMethod()]
-        public void SibalaGameTest_5566_18la()
-        {
-            Test(new List<int> { 5,5,6,6 }, "18la");
-        }
+        //[TestMethod()]
+        //public void SibalaGameTest_3SameNumberDice_NoPoint()
+        //{
+        //    Test(new List<int> { 5, 2, 5, 5 }, "No Point");
+        //}
+        //[TestMethod()]
+        //public void SibalaGameTest_3121_5Point()
+        //{
+        //    Test(new List<int> { 3, 1, 2, 1 }, "5 Point");
+        //}
+        //[TestMethod()]
+        //public void SibalaGameTest_4455_10Point()
+        //{
+        //    Test(new List<int> { 4,4,5,5 }, "10 Point");
+        //}
+        //[TestMethod()]
+        //public void SibalaGameTest_2332_6Point()
+        //{
+        //    Test(new List<int> { 2,3,3,2 }, "6 Point");
+        //}
+        //[TestMethod()]
+        //public void SibalaGameTest_1123_5Point()
+        //{
+        //    Test(new List<int> { 1,1,2,3 }, "5 Point");
+        //}
+        //[TestMethod()]
+        //public void SibalaGameTest_3312_BG()
+        //{
+        //    Test(new List<int> { 3,3,1,2 }, "BG");
+        //}
+        //[TestMethod()]
+        //public void SibalaGameTest_5566_18la()
+        //{
+        //    Test(new List<int> { 5,5,6,6 }, "18la");
+        //}
 
 
 
