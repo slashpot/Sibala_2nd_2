@@ -48,7 +48,8 @@ namespace Sibala
 
         private bool IsAllDifferentPoint()
         {
-            return Dices.GroupBy(x => x).Count() == 4;
+            var sameDiceMaxCount = Dices.GroupBy(x => x).Max(g => g.Count());
+            return sameDiceMaxCount == 1;
         }
 
         private bool IsNoPoint()
@@ -58,12 +59,14 @@ namespace Sibala
 
         private bool IsOneColor()
         {
-            return Dices.GroupBy(x => x).Count() == 1;
+            var sameDiceMaxCount = Dices.GroupBy(x => x).Max(g => g.Count());
+            return sameDiceMaxCount == 4;
         }
 
         private bool IsSamePointWithThree()
         {
-            return Dices.GroupBy(x => x).Any(y => y.Count() == 3);
+            var sameDiceMaxCount = Dices.GroupBy(x => x).Max(g => g.Count());
+            return sameDiceMaxCount == 3;
         }
     }
 
