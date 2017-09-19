@@ -7,9 +7,14 @@ namespace Sibala
 {
     public class SibalaMain
     {
-        public int Compare(SibalaResult inputResult1, SibalaResult inputResult2)
+        public int Compare(SibalaGame inputResult1, SibalaGame inputResult2)
         {
-            return 1;
+            if(inputResult1.Type > inputResult2.Type)
+                return 1;
+            else
+            {
+                return 1;
+            }
         }
     }
 }
