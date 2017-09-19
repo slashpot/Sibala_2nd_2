@@ -2,7 +2,7 @@ using System.Linq;
 
 namespace Sibala
 {
-    public class OneColorHandler
+    public class OneColorHandler : ISibalaResultHandler
     {
         private SibalaGame _sibalaGame;
 
@@ -11,7 +11,7 @@ namespace Sibala
             _sibalaGame = sibalaGame;
         }
 
-        public void SetOneColor()
+        public void SetResult()
         {
             _sibalaGame.Type = SibalaType.OneColor;
             _sibalaGame.Points = _sibalaGame.Dices.First();

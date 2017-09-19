@@ -12,16 +12,9 @@ namespace Sibala
 
     public class SibalaGame
     {
-        private readonly OneColorHandler _oneColorHandler;
-        private readonly NoPointHandler _noPointHandler;
-        private readonly NormalPointHandler _normalPointHandler;
-
         public SibalaGame(List<int> dices)
         {
             Dices = dices;
-            _oneColorHandler = new OneColorHandler(this);
-            _noPointHandler = new NoPointHandler(this);
-            _normalPointHandler = new NormalPointHandler(this);
             Calculate();
         }
 
@@ -36,15 +29,18 @@ namespace Sibala
         {
             if (IsOneColor())
             {
-                _oneColorHandler.SetOneColor();
+                ISibalaResultHandler handler = new OneColorHandler(this);
+                handler.SetResult();
             }
             else if (IsNoPoint())
             {
-                _noPointHandler.SetNoPoint();
+                ISibalaResultHandler handler = new NoPointHandler(this);
+                handler.SetResult();
             }
             else
             {
-                _normalPointHandler.SetNormalPoint();
+                ISibalaResultHandler handler = new NormalPointHandler(this);
+                handler.SetResult();
             }
         }
 
@@ -67,5 +63,10 @@ namespace Sibala
         {
             return Dices.GroupBy(x => x).Where(y => y.Count() == 3).Any();
         }
+    }
+
+    internal interface ISibalaResultHandler
+    {
+        void SetResult();
     }
 }

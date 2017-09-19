@@ -1,6 +1,6 @@
 namespace Sibala
 {
-    public class NoPointHandler
+    public class NoPointHandler : ISibalaResultHandler
     {
         private SibalaGame _sibalaGame;
 
@@ -9,7 +9,7 @@ namespace Sibala
             _sibalaGame = sibalaGame;
         }
 
-        public void SetNoPoint()
+        public void SetResult()
         {
             _sibalaGame.Type = SibalaType.NoPoint;
             _sibalaGame.Points = 0;

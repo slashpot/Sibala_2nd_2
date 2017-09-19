@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Sibala
 {
-    public class NormalPointHandler
+    public class NormalPointHandler : ISibalaResultHandler
     {
         private SibalaGame _sibalaGame;
 
@@ -12,7 +12,7 @@ namespace Sibala
             _sibalaGame = sibalaGame;
         }
 
-        public void SetNormalPoint()
+        public void SetResult()
         {
             if (IsTwoPair())
             {
