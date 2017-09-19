@@ -13,9 +13,15 @@ namespace Sibala
         public int MaxDice;
         public SibalaGame(List<int> dices)
         {
-            Type = SibalaType.OneColor;
-            Value = 6;
-            Output = "One Color";
+            var groupAmount = dices.GroupBy(x => x).Count();
+
+            if (groupAmount == 1)
+            {
+                Type = SibalaType.OneColor;
+                Value = dices.First();
+                Output = "One Color";
+            }
+
         }
     }
 
