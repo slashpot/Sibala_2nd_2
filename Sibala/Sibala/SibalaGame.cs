@@ -43,8 +43,7 @@ namespace Sibala
             }
             else
             {
-                var isTwoPair = _dices.GroupBy(x => x).Count() == 2;
-                if (isTwoPair)
+                if (IsTwoPair())
                 {
                     Type = SibalaType.NormalPoint;
                     Points = _dices.Max() * 2;
@@ -76,6 +75,11 @@ namespace Sibala
                     MaxPoint = theSame.Select(x => x.Key).Max();
                 }
             }
+        }
+
+        private bool IsTwoPair()
+        {
+            return _dices.GroupBy(x => x).Count() == 2;
         }
 
         private bool IsAllDifferentPoint()
