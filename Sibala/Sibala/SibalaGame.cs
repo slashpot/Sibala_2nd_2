@@ -32,41 +32,16 @@ namespace Sibala
 
         private ISibalaResultHandler GetSibalaResultHandler()
         {
-            if (IsOneColor())
-            {
-                return new OneColorHandler(this);
-            }
-            else if (IsNoPoint())
-            {
-                return new NoPointHandler(this);
-            }
-            else
-            {
-                return new NormalPointHandler(this);
-            }
-        }
-
-        private bool IsAllDifferentPoint()
-        {
             var sameDiceMaxCount = Dices.GroupBy(x => x).Max(g => g.Count());
-            return sameDiceMaxCount == 1;
-        }
+            Dictionary<int, ISibalaResultHandler> handlerLookup = new Dictionary<int, ISibalaResultHandler>
+            {
+                {4,  new OneColorHandler(this)},
+                {1,  new NoPointHandler(this)},
+                {3,  new NoPointHandler(this)},
+                {2,  new NormalPointHandler(this)},
+            };
 
-        private bool IsNoPoint()
-        {
-            return IsAllDifferentPoint() || IsSamePointWithThree();
-        }
-
-        private bool IsOneColor()
-        {
-            var sameDiceMaxCount = Dices.GroupBy(x => x).Max(g => g.Count());
-            return sameDiceMaxCount == 4;
-        }
-
-        private bool IsSamePointWithThree()
-        {
-            var sameDiceMaxCount = Dices.GroupBy(x => x).Max(g => g.Count());
-            return sameDiceMaxCount == 3;
+            return handlerLookup[sameDiceMaxCount];
         }
     }
 
