@@ -89,7 +89,7 @@ namespace Sibala
 
         private bool IsAllDifferentPoint()
         {
-            return _dices.GroupBy(x => x).Count() > 3;
+            return _dices.GroupBy(x => x).Count() == 4;
         }
 
         private bool IsNoPoint()
