@@ -24,6 +24,7 @@ namespace Sibala
         public string Output { get; private set; }
         public int Points { get; private set; }
         public SibalaType Type { get; private set; }
+
         private void Calculate()
         {
             if (IsOneColor())
@@ -42,12 +43,13 @@ namespace Sibala
             }
             else
             {
-                if (_dices.GroupBy(x => x).Count() == 2)
+                var isTwoPair = _dices.GroupBy(x => x).Count() == 2;
+                if (isTwoPair)
                 {
-                    var hasTwo = _dices.GroupBy(x => x).Where(y => y.Count() == 2);
-
                     Type = SibalaType.NormalPoint;
-                    Points = hasTwo.Select(x => x.Key).Max() * 2;
+                    Points = _dices.Max() * 2;
+                    MaxPoint = _dices.Max();
+
                     if (Points == 12)
                     {
                         Output = "18la";
@@ -56,7 +58,6 @@ namespace Sibala
                     {
                         Output = Points + " Point";
                     }
-                    MaxPoint = hasTwo.Select(x => x.Key).Max();
                 }
                 else
                 {
@@ -70,7 +71,7 @@ namespace Sibala
                     }
                     else
                     {
-                        Output = Points.ToString() + " Point";
+                        Output = Points + " Point";
                     }
                     MaxPoint = theSame.Select(x => x.Key).Max();
                 }
