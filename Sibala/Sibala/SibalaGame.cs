@@ -27,22 +27,21 @@ namespace Sibala
 
         private void Calculate()
         {
-            int groupAmount = _dices.GroupBy(x => x).Count();
-            if (groupAmount == 1)
+            if (IsOneColor())
             {
                 Type = SibalaType.OneColor;
                 Points = _dices.First();
                 Output = "One Color";
                 MaxPoint = Points;
             }
-            else if (groupAmount > 3)
+            else if (IsNoPoint())
             {
                 Type = SibalaType.NoPoint;
                 Points = 0;
                 Output = "No Point";
                 MaxPoint = Points;
             }
-            else if (groupAmount == 2)
+            else if (_dices.GroupBy(x => x).Count() == 2)
             {
                 var hasThree = _dices.GroupBy(x => x).Where(y => y.Count() == 3);
                 var hasTwo = _dices.GroupBy(x => x).Where(y => y.Count() == 2);
@@ -84,6 +83,16 @@ namespace Sibala
                 }
                 MaxPoint = theSame.Select(x => x.Key).Max();
             }
+        }
+
+        private bool IsNoPoint()
+        {
+            return _dices.GroupBy(x => x).Count() > 3;
+        }
+
+        private bool IsOneColor()
+        {
+            return _dices.GroupBy(x => x).Count() == 1;
         }
     }
 }
