@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Sibala
 {
@@ -27,9 +24,8 @@ namespace Sibala
                     return diceOrder.IndexOf(inputResult1.Value) - diceOrder.IndexOf(inputResult2.Value);
                 }
             }
-            
-            return inputResult1.Type - inputResult2.Type;
 
+            return inputResult1.Type - inputResult2.Type;
         }
     }
 }

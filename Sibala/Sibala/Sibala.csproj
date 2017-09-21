@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="NoPointResultHandler.cs" />
+    <Compile Include="NormalPointResultHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SameColorHandler.cs" />
     <Compile Include="SibalaMain.cs" />
     <Compile Include="SibalaGame.cs" />
   </ItemGroup>

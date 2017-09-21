@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Sibala
 {
@@ -11,76 +9,33 @@ namespace Sibala
         public int Value;
         public string Output;
         public int MaxDice;
+
+        public List<int> Dices { get; }
+
         public SibalaGame(List<int> dices)
         {
-            var groupAmount = dices.GroupBy(x => x).Count();
-
-            
-            Calculate(dices, groupAmount);
+            Dices = dices;
+            Calculate();
         }
 
-        private void Calculate(List<int> dices, int groupAmount)
+        private void Calculate()
         {
-            if (groupAmount == 1)
+            var isSameDiceMax = Dices.GroupBy(x => x).Max(x => x.Count());
+            var handlerDictionray = new Dictionary<int, ISibalaHandler>()
             {
-                Type = SibalaType.OneColor;
-                Value = dices.First();
-                Output = "One Color";
-                MaxDice = Value;
-            } 
-            else if (groupAmount > 3) 
-            {
-                Type = SibalaType.NoPoint;
-                Value = 0;
-                Output = "No Point";
-                MaxDice = Value;
-            }
-            else if (groupAmount == 2)
-            {
-                var hasThree = dices.GroupBy(x => x).Where(y => y.Count() == 3);
-                var hasTwo = dices.GroupBy(x => x).Where(y => y.Count() == 2);
-
-                if (hasThree.Any())
-                {
-                    Type = SibalaType.NoPoint;
-                    Value = 0;
-                    Output = "No Point";
-                }
-                else
-                {
-                    Type = SibalaType.NormalPoint;
-                    Value = hasTwo.Select(x=>x.Key).Max()*2;
-                    if (Value == 12)
-                    {
-                        Output = "18la";
-                    }
-                    else
-                    {
-                        Output = Value + " Point";
-                    }
-                    MaxDice = hasTwo.Select(x => x.Key).Max();
-
-                }
-            }
-            else
-            {
-                var theSame = dices.GroupBy(x => x).Where(y => y.Count() == 1);
-                
-                Type = SibalaType.NormalPoint;
-                Value = theSame.Select(x=>x.Key).Sum();
-                if (Value == 3)
-                {
-                    Output = "BG";
-                }
-                else
-                {
-                    Output = Value.ToString() + " Point";
-                }
-                MaxDice = theSame.Select(x=>x.Key).Max();
-            }
+                {1, new NoPointResultHandler(this)},
+                {2, new NormalPointResultHandler(this) },
+                {3, new NoPointResultHandler(this) },
+                {4, new SameColorHandler(this) }
+            };
+            handlerDictionray[isSameDiceMax].SetResult();
         }
     }
 
+    public interface ISibalaHandler
+    {
+        void SetResult();
+    }
 
     public enum SibalaType
     {
