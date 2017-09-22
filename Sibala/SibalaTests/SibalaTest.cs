@@ -9,7 +9,7 @@ namespace SibalaTests
     {
         private SibalaGame _inputResult1;
         private SibalaGame _inputResult2;
-        private SibalaMain _target = new SibalaMain();
+        private SibalaComparer _target = new SibalaComparer();
         private int actual;
 
         [TestMethod]

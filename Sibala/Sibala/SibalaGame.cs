@@ -6,9 +6,9 @@ namespace Sibala
     public class SibalaGame
     {
         public SibalaType Type;
-        public int Value;
-        public string Output;
-        public int MaxDice;
+        public int Point { get;  set; }
+        public string Output { get;  set; }
+        public int MaxDice { get;  set; }
 
         public List<int> Dices { get; }
 
